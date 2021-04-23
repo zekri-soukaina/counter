@@ -1,23 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import CounterComp from "./components/CounterComp";
 
 function App() {
+  const counters = [
+    {
+      id: "43#66h",
+      name: "First counter",
+      description: "This is a great counter",
+    },
+    {
+      id: "665$gg",
+      name: "Second counter",
+      description: "This is an awesome counter",
+    },
+    {
+      id: "%555t",
+      name: "Third counter",
+      description: "This is an OK-ish counter",
+    },
+    {
+      id: "gfh566",
+      name: "Fourth counter",
+      description: "Let's make counters great again.",
+    },
+  ];
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {counters.map((counter, index) => {
+        return (
+          <CounterComp
+            key={index}
+            id={counter.id}
+            name={counter.name}
+            description={counter.description}
+          />
+        );
+      })}
     </div>
   );
 }
