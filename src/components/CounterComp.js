@@ -2,21 +2,20 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import "./CounterComp.scss";
 
-export default function CounterComp(props) {
-  const { name, description, id } = props;
+export default function CounterComp({ name, description, id }) {
   const [like, setLike] = useState(false);
   const [currentCount, setCourentCount] = useState(0);
-  const [advice, setAdvice] = useState();
-  const start_again = 0;
 
+  const start_again = 0;
+  const [advice, setAdvice] = useState("");
   useEffect(() => {
     async function fetchData() {
-      const response = await axios.get("https://api.adviceslip.com/advice");
-      console.log(response);
+      const response = await axios.get("	https://api.adviceslip.com/advice");
+      console.log(response.data.slip.advice);
       setAdvice(response.data.slip.advice);
     }
 
-    console.log(fetchData());
+    fetchData();
   }, []);
 
   const toggleLike = () => {
@@ -27,7 +26,7 @@ export default function CounterComp(props) {
   return (
     <div className="counter">
       <h3>
-        {name}, with id :{id}
+        Name: {name}, id :{id}
       </h3>
       <h4>{description} </h4>
       <p>
